@@ -10,7 +10,7 @@ let y = 16;
 let squareSize = x / y;
 // size of each square
 
-for (let i = 0; i < 256; i++) {
+for (let i = 0; i < y * y; i++) {
     let square = document.createElement('div');
 
     square.style.width = squareSize + 'px';
@@ -20,6 +20,24 @@ for (let i = 0; i < 256; i++) {
    
     document.querySelector('.grid-container').appendChild(square);
 
+    square.addEventListener('mouseenter', () => {
+        if (!isDrawing) return;
+        console.log('hovered');
+            square.style.backgroundColor = 'black';
+    });
+
     
 }
+
+let isDrawing = false;
+
+document.addEventListener('mousedown', (e) => {
+    if (e.button === 0) {
+        isDrawing = true;
+    }
+});
+
+document.addEventListener('mouseup', () => {
+        isDrawing = false;
+});
 
