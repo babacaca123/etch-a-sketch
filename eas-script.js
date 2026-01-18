@@ -10,7 +10,20 @@ let y = 16;
 let squareSize = x / y;
 // size of each square
 
-for (let i = 0; i < y * y; i++) {
+let squares = [];
+
+function createGrid(size) {
+
+
+    const container = document.querySelector('.grid-container');
+    container.innerHTML = '';
+
+    squares = [];
+
+    for (let i = 0; i < size * size; i++) {
+
+ 
+
     let square = document.createElement('div');
 
     square.style.width = squareSize + 'px';
@@ -26,8 +39,16 @@ for (let i = 0; i < y * y; i++) {
             square.style.backgroundColor = 'black';
     });
 
-    
+    square.addEventListener("dragstart", (e) => {
+        e.preventDefault();
+    });
+    // squares.push(square);
 }
+}
+
+
+createGrid(y);
+
 
 let isDrawing = false;
 
@@ -41,3 +62,11 @@ document.addEventListener('mouseup', () => {
         isDrawing = false;
 });
 
+const reset = document.getElementById('reset-button');
+
+reset.addEventListener('click', () => {
+    console.log('reset clicked');
+    createGrid(y);
+
+    
+});
