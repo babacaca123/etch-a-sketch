@@ -12,6 +12,22 @@ let squareSize = x / y;
 
 let squares = [];
 
+let gridOn = true;
+
+
+
+function gridStatus() {
+    squares.forEach(square => {
+        if (gridOn) {
+            square.style.border = '1px solid lightgray';
+        } else {
+            square.style.border = 'none';
+        }
+
+    });
+}
+
+
 function createGrid(size) {
 
 
@@ -29,21 +45,24 @@ function createGrid(size) {
     square.style.width = squareSize + 'px';
     square.style.height = squareSize + 'px';
     square.style.boxSizing = 'border-box';
-    square.style.border = '1px solid lightgray';
+
+
    
     document.querySelector('.grid-container').appendChild(square);
 
     square.addEventListener('mouseenter', () => {
         if (!isDrawing) return;
-        console.log('hovered');
             square.style.backgroundColor = 'black';
     });
 
     square.addEventListener("dragstart", (e) => {
         e.preventDefault();
     });
-    // squares.push(square);
+    squares.push(square);
+
+   
 }
+    gridStatus();
 }
 
 
@@ -70,3 +89,36 @@ reset.addEventListener('click', () => {
 
     
 });
+
+const grid = document.getElementById('grid-button');
+
+
+
+
+
+
+grid.addEventListener('click', () => {
+    
+    console.log('grid clicked');
+    
+    gridOn = !gridOn;
+
+    gridStatus();
+    
+    
+
+});
+
+
+// fix this later to toggle grid lines on and off 
+
+const slider = document.getElementById('grid-size');
+
+const sliderDisplay = document.getElementById('grid-size-display');
+
+slider.addEventListener('input', () => {
+    y = slider.value;
+    sliderDisplay.textContent = `${y} x ${y}`;
+    squareSize = x / y;
+    createGrid(y);
+});    
