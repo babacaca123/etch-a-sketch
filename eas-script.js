@@ -14,6 +14,33 @@ let squares = [];
 
 let gridOn = true;
 
+let colorMode = true; // true for color mode, false for darken mode
+
+
+
+
+
+const colorPicker = document.getElementById('color-picker');
+const darkenButton = document.getElementById('darken');
+
+let currentColor = colorPicker.value;
+
+colorPicker.addEventListener('input', () => {
+    currentColor = colorPicker.value;
+    colorMode = true;
+    colorPicker.classList.add('selected');
+    darkenButton.classList.remove('selected');
+});
+
+darkenButton.addEventListener('click', () => {
+    colorMode = false;
+    darkenButton.classList.add('selected');
+    colorPicker.classList.remove('selected');
+    currentColor = "rgb(200, 200, 200)";
+});
+
+
+
 
 
 function gridStatus() {
@@ -26,6 +53,14 @@ function gridStatus() {
 
     });
 }
+
+
+
+
+
+
+
+const fragment = document.createDocumentFragment();
 
 
 function createGrid(size) {
@@ -46,13 +81,18 @@ function createGrid(size) {
     square.style.height = squareSize + 'px';
     square.style.boxSizing = 'border-box';
 
-
+    square.darkness = 0;
    
-    document.querySelector('.grid-container').appendChild(square);
+   
+
+    fragment.appendChild(square);
 
     square.addEventListener('mouseenter', () => {
         if (!isDrawing) return;
-            square.style.backgroundColor = 'black';
+            square.style.backgroundColor = currentColor;
+            
+            darkenColor(square);
+            
     });
 
     square.addEventListener("dragstart", (e) => {
@@ -62,7 +102,9 @@ function createGrid(size) {
 
    
 }
+    container.appendChild(fragment);
     gridStatus();
+    
 }
 
 
@@ -110,7 +152,27 @@ grid.addEventListener('click', () => {
 });
 
 
-// fix this later to toggle grid lines on and off 
+function darkenColor(square) {
+    if (square.darkness === undefined) {
+        square.darkness = 0;
+    }
+    
+   
+
+    if (!colorMode && (square.darkness <= 200)){
+        
+        
+        console.log(square.darkness);
+        square.style.backgroundColor = `rgb(${200 - square.darkness}, ${200 - square.darkness}, ${200 - square.darkness})`;
+        if (square.darkness < 200){
+            square.darkness += 40;
+        }
+    }
+        
+    
+   
+}
+
 
 const slider = document.getElementById('grid-size');
 
@@ -122,3 +184,5 @@ slider.addEventListener('input', () => {
     squareSize = x / y;
     createGrid(y);
 });    
+
+
