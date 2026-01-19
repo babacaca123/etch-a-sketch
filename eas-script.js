@@ -39,7 +39,7 @@ darkenButton.addEventListener('click', () => {
     currentColor = "rgb(200, 200, 200)";
 });
 
-
+// highlighted button logic
 
 
 
@@ -54,7 +54,7 @@ function gridStatus() {
     });
 }
 
-
+// grid logic
 
 
 
@@ -71,6 +71,8 @@ function createGrid(size) {
 
     squares = [];
 
+    // clears existing grid
+
     for (let i = 0; i < size * size; i++) {
 
  
@@ -83,7 +85,7 @@ function createGrid(size) {
 
     square.darkness = 0;
    
-   
+        // square creation and styling
 
     fragment.appendChild(square);
 
@@ -92,13 +94,17 @@ function createGrid(size) {
             square.style.backgroundColor = currentColor;
             
             darkenColor(square);
-            
+        
+        // coloring logic
     });
 
     square.addEventListener("dragstart", (e) => {
         e.preventDefault();
     });
+    // prevents dragging
+
     squares.push(square);
+    // push square to squares array
 
    
 }
@@ -123,33 +129,27 @@ document.addEventListener('mouseup', () => {
         isDrawing = false;
 });
 
+// only allows drawing when mouse is held down
+
 const reset = document.getElementById('reset-button');
 
 reset.addEventListener('click', () => {
-    console.log('reset clicked');
     createGrid(y);
 
     
 });
+// resets the grid
 
 const grid = document.getElementById('grid-button');
 
 
-
-
-
-
 grid.addEventListener('click', () => {
-    
-    console.log('grid clicked');
-    
     gridOn = !gridOn;
 
     gridStatus();
-    
-    
 
 });
+// toggles grid lines on and off
 
 
 function darkenColor(square) {
@@ -157,22 +157,16 @@ function darkenColor(square) {
         square.darkness = 0;
     }
     
-   
-
     if (!colorMode && (square.darkness <= 200)){
-        
-        
-        console.log(square.darkness);
+
         square.style.backgroundColor = `rgb(${200 - square.darkness}, ${200 - square.darkness}, ${200 - square.darkness})`;
         if (square.darkness < 200){
             square.darkness += 40;
         }
     }
-        
-    
    
 }
-
+// darkens squares by 20% each time they are hovered over, stops when black
 
 const slider = document.getElementById('grid-size');
 
@@ -185,4 +179,4 @@ slider.addEventListener('input', () => {
     createGrid(y);
 });    
 
-
+// slider appearence and logic
