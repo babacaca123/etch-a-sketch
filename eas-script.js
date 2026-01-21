@@ -92,6 +92,7 @@ function createGrid(size) {
     square.addEventListener('mouseenter', () => {
         if (!isDrawing) return;
             square.style.backgroundColor = currentColor;
+            square.style.border = `1px solid ${currentColor}`;
             
             darkenColor(square);
         
@@ -160,6 +161,7 @@ function darkenColor(square) {
     if (!colorMode && (square.darkness <= 200)){
 
         square.style.backgroundColor = `rgb(${200 - square.darkness}, ${200 - square.darkness}, ${200 - square.darkness})`;
+        square.style.border = `1px solid rgb(${200 - square.darkness}, ${200 - square.darkness}, ${200 - square.darkness})`;
         if (square.darkness < 200){
             square.darkness += 40;
         }
@@ -180,3 +182,8 @@ slider.addEventListener('input', () => {
 });    
 
 // slider appearence and logic
+
+
+// make the border color change with the square.
+// make a color button to change to color mode.
+// CSS
