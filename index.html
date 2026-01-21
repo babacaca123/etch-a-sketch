@@ -8,21 +8,42 @@
 
 </head>
 <body>
+
+    <div class="body-container">
+    <div class="header"> 
+        <h1>draw.</h1>
+
+        <label for="grid-size">Grid Size:</label>
+        <input type="range" id="grid-size" min="2" max="99" value="16">
+        <span id="grid-size-display">16</span>
+    </div>
+
+
     <div class="grid-container"> </div>
 
-    <button id="reset-button">Reset</button>
 
-    <button id="grid-button">Grid</button>
 
-    <label for="grid-size">Grid Size:</label>
-    <input type="range" id="grid-size" min="2" max="99" value="16">
-    <span id="grid-size-display">16</span>
+    <div class="footer"> 
+
+        <div class="footer-one"> 
+            <input type="color" id="color-picker">
+            <button id="color-mode" class="selected">Color</button>
+
+            <button id="darken">Darken</button>
+        </div>
+        
+
+        <div class="footer-two">
+             <button id="grid-button">Grid</button>
+
+             <button id="reset-button">Reset</button>
+        </div>      
+    
     
 
-    <input type="color" id="color-picker">
-    <button id="color-mode" class="selected">Color</button>
-
-    <button id="darken">Darken</button>
+        
+    </div>
+    </div> 
     <script src="eas-script.js" defer></script>         
 </body>
 

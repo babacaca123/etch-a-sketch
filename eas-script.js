@@ -1,6 +1,6 @@
 
 
-let x = 512;
+let x = 450;
 // container width and height
 
 let y = 16;
@@ -194,12 +194,4 @@ slider.addEventListener('input', () => {
 
 
 
-// to do
-
-
-// make a color button to change to color mode.
-// CSS
-
-
-
-// if button selected, change to color mode or if color selected, change to color mode, color button highlighted either way
+// fix grid lines overriding color when toggled back on
