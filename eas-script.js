@@ -19,23 +19,32 @@ let colorMode = true; // true for color mode, false for darken mode
 
 
 
-
+const colorButton = document.getElementById('color-mode');
 const colorPicker = document.getElementById('color-picker');
 const darkenButton = document.getElementById('darken');
 
 let currentColor = colorPicker.value;
 
-colorPicker.addEventListener('input', () => {
+function activateColorMode() {
     currentColor = colorPicker.value;
     colorMode = true;
-    colorPicker.classList.add('selected');
+    colorButton.classList.add('selected');
     darkenButton.classList.remove('selected');
+}
+
+
+colorPicker.addEventListener('input', () => {
+    activateColorMode();
+});
+
+colorButton.addEventListener('click', () => {
+    activateColorMode();
 });
 
 darkenButton.addEventListener('click', () => {
     colorMode = false;
     darkenButton.classList.add('selected');
-    colorPicker.classList.remove('selected');
+    colorButton.classList.remove('selected');
     currentColor = "rgb(200, 200, 200)";
 });
 
@@ -184,6 +193,13 @@ slider.addEventListener('input', () => {
 // slider appearence and logic
 
 
-// make the border color change with the square.
+
+// to do
+
+
 // make a color button to change to color mode.
 // CSS
+
+
+
+// if button selected, change to color mode or if color selected, change to color mode, color button highlighted either way
