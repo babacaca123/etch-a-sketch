@@ -54,16 +54,21 @@ darkenButton.addEventListener('click', () => {
 
 function gridStatus() {
     squares.forEach(square => {
-        if (gridOn) {
+
+
+
+
+    if (square.style.backgroundColor === 'rgb(255, 255, 255)') {
+        if ((gridOn)) {
             square.style.border = '1px solid lightgray';
         } else {
             square.style.border = 'none';
-        }
-
+    }
+    }
     });
 }
 
-// grid logic
+// grid logic, only turns on borders for uncolored squares
 
 
 
@@ -91,6 +96,7 @@ function createGrid(size) {
     square.style.width = squareSize + 'px';
     square.style.height = squareSize + 'px';
     square.style.boxSizing = 'border-box';
+    square.style.backgroundColor = 'rgb(255, 255, 255)';
 
     square.darkness = 0;
    
@@ -115,7 +121,7 @@ function createGrid(size) {
 
     squares.push(square);
     // push square to squares array
-
+    
    
 }
     container.appendChild(fragment);
@@ -194,4 +200,5 @@ slider.addEventListener('input', () => {
 
 
 
-// fix grid lines overriding color when toggled back on
+// in firefox, the cubes are leaving a half square gap on each side, and spilling out the container at the bottom
+// at 11x11, 16x16, 13x13, 14x14, 21x21, 23x23, 31x31
