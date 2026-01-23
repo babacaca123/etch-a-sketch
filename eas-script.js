@@ -188,6 +188,7 @@ function darkenColor(square) {
 const slider = document.getElementById('grid-size');
 
 const sliderDisplay = document.getElementById('grid-size-display');
+sliderDisplay.textContent = `${y} x ${y}`;
 
 slider.addEventListener('input', () => {
     y = slider.value;
