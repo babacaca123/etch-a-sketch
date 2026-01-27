@@ -93,8 +93,10 @@ function createGrid(size) {
 
     let square = document.createElement('div');
 
-    square.style.width = squareSize + 'px';
-    square.style.height = squareSize + 'px';
+    // square.style.width = squareSize + 'px';
+    // square.style.height = squareSize + 'px';
+    square.style.width = `${100 / size}%`;
+    square.style.height = `${100 / size}%`;
     square.style.boxSizing = 'border-box';
     square.style.backgroundColor = 'rgb(255, 255, 255)';
 
