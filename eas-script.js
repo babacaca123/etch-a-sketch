@@ -7,7 +7,7 @@ let y = 16;
 // number of squares per side
 //THIS WILL BE MODIFIED WITH THE SLIDER
 
-let squareSize = x / y;
+let squareSize = Math.floor( x / y);
 // size of each square
 
 let squares = [];
