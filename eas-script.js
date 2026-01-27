@@ -93,8 +93,6 @@ function createGrid(size) {
 
     let square = document.createElement('div');
 
-    // square.style.width = squareSize + 'px';
-    // square.style.height = squareSize + 'px';
     square.style.width = `${100 / size}%`;
     square.style.height = `${100 / size}%`;
     square.style.boxSizing = 'border-box';
@@ -201,7 +199,3 @@ slider.addEventListener('input', () => {
 
 // slider appearence and logic
 
-
-
-// in firefox, the cubes are leaving a half square gap on each side, and spilling out the container at the bottom
-// at 11x11, 16x16, 13x13, 14x14, 21x21, 23x23, 31x31
