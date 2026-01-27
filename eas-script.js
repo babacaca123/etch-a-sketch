@@ -60,9 +60,9 @@ function gridStatus() {
 
     if (square.style.backgroundColor === 'rgb(255, 255, 255)') {
         if ((gridOn)) {
-            square.style.border = '1px solid lightgray';
+            square.style.outline = '1px solid lightgray';
         } else {
-            square.style.border = 'none';
+            square.style.outline = 'none';
     }
     }
     });
@@ -74,12 +74,12 @@ function gridStatus() {
 
 
 
-const fragment = document.createDocumentFragment();
+
 
 
 function createGrid(size) {
 
-
+    const fragment = document.createDocumentFragment();
     const container = document.querySelector('.grid-container');
     container.innerHTML = '';
 
@@ -109,7 +109,7 @@ function createGrid(size) {
     square.addEventListener('mouseenter', () => {
         if (!isDrawing) return;
             square.style.backgroundColor = currentColor;
-            square.style.border = `1px solid ${currentColor}`;
+            square.style.outline = `1px solid ${currentColor}`;
             
             darkenColor(square);
         
@@ -178,7 +178,7 @@ function darkenColor(square) {
     if (!colorMode && (square.darkness <= 200)){
 
         square.style.backgroundColor = `rgb(${200 - square.darkness}, ${200 - square.darkness}, ${200 - square.darkness})`;
-        square.style.border = `1px solid rgb(${200 - square.darkness}, ${200 - square.darkness}, ${200 - square.darkness})`;
+        square.style.outline = `1px solid rgb(${200 - square.darkness}, ${200 - square.darkness}, ${200 - square.darkness})`;
         if (square.darkness < 200){
             square.darkness += 40;
         }
